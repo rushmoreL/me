@@ -1,0 +1,48 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex; /* Enables flexbox */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  overflow: hidden; /* Hides any overflow */
+  background-color: #000000;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr); /* 24 columns */
+  grid-auto-rows: calc(40vw * (37 / 28) / 24); /* Row height based on column width */
+  gap: 0px;
+  width: 40vw; /* Grid width is 50% of viewport width */
+  position: relative; /* Needed for absolute positioning within cells */
+  background-image: url('background/face.png'); /* Path to the background image */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center; /* Center the background image */
+}
+
+.grid-item {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(37 / 28 * 100%); /* Maintaining aspect ratio of 28:37 */
+}
+
+
+.grid-item img.slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+}
+
+
+
+
+.grid-item:hover img.slide-img {
+  opacity: 0; /* Make images fully transparent on hover */
+}
